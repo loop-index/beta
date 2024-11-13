@@ -19,6 +19,11 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
+    - name: Set up Python 3.13
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.13' 
+
     - name: Set up dependencies
       uses: awalsh128/cache-apt-pkgs-action@latest
       with: 
@@ -34,23 +39,24 @@ jobs:
         mkdir -p xml
 
     - name: Generate test report
+      working-directory: xml
       run: |
-        ./calc -c -v -ojunit
+        ../calc -c -v -ojunit
       continue-on-error: true
 
-    - name: Convert test report
+    - name: Convert test report to html
       run: |
-        ant convert
+        python3 gen.py
       continue-on-error: true
     
     - name: Generate coverage report
       run: |
-        lcov --directory . --capture --output-file coverage.info --ignore-errors mismatch
-        genhtml coverage.info --output-directory html/coverage
+        make coverage
+        cp -r coverage html/coverage
       continue-on-error: true
 
     - name: Copy index.html
-      run: cp index_example.html html/index.html
+      run: cp target.html html/index.html
 
     - name: Upload coverage report
       uses: JamesIves/github-pages-deploy-action@v4

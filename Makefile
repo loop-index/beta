@@ -16,6 +16,11 @@ coverage: tests.cpp calc_tests.cpp
 	lcov --capture --directory . --output-file coverage.info
 	genhtml coverage.info --output-directory coverage
 
+report: test
+	-mkdir -p xml
+	cd xml && ../calc -c -ojunit
+	python3 gen.py
+
 run: build
 	./calc
 
@@ -23,3 +28,5 @@ clean:
 	rm -f calc
 	rm -f *.gcda *.gcno *.info
 	rm -rf coverage
+	rm -rf xml
+	rm -f target.html
