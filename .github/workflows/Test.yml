@@ -22,44 +22,40 @@ jobs:
     - name: Set up dependencies
       uses: awalsh128/cache-apt-pkgs-action@latest
       with: 
-        packages: gcc g++ make cpputest
+        packages: gcc g++ make cpputest lcov ant
         version: 1.0
   
     - name: Make CppUTest tests
-      run: make coverage
+      run: make test
 
-    - name: Create badge  
-      uses: GoogleCloudPlatform/github-badge-lcov@v1.0.0
-      file: ./coverage.info
+    - name: Create output directories
+      run: |
+        mkdir -p html
+        mkdir -p xml
 
-    # - name: Create output directories
-    #   run: |
-    #     mkdir -p TDD4ES/html
-    #     mkdir -p TDD4ES/xml
+    - name: Generate test report
+      working-directory: beta
+      run: |
+        ./calc -c -v -ojunit
+      continue-on-error: true
 
-    # - name: Generate test report
-    #   working-directory: TDD4ES
-    #   run: |
-    #     ./all_tests.testcase -c -v -ojunit
-    #   continue-on-error: true
-
-    # - name: Convert test report
-    #   working-directory: TDD4ES
-    #   run: |
-    #     ant convert
-    #   continue-on-error: true
+    - name: Convert test report
+      working-directory: beta
+      run: |
+        ant convert
+      continue-on-error: true
     
-    # - name: Generate coverage report
-    #   working-directory: TDD4ES
-    #   run: |
-    #     lcov --directory . --capture --output-file coverage.info --ignore-errors mismatch
-    #     genhtml coverage.info --output-directory html/coverage
-    #   continue-on-error: true
+    - name: Generate coverage report
+      working-directory: beta
+      run: |
+        lcov --directory . --capture --output-file coverage.info --ignore-errors mismatch
+        genhtml coverage.info --output-directory html/coverage
+      continue-on-error: true
 
-    # - name: Copy index.html
-    #   run: cp TDD4ES/tests/index_example.html TDD4ES/html/index.html
+    - name: Copy index.html
+      run: cp index_example.html html/index.html
 
-    # - name: Upload coverage report
-    #   uses: JamesIves/github-pages-deploy-action@v4
-    #   with:
-    #     folder: TDD4ES/html/
+    - name: Upload coverage report
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        folder: html/
