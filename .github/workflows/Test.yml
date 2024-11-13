@@ -34,19 +34,16 @@ jobs:
         mkdir -p xml
 
     - name: Generate test report
-      working-directory: beta
       run: |
         ./calc -c -v -ojunit
       continue-on-error: true
 
     - name: Convert test report
-      working-directory: beta
       run: |
         ant convert
       continue-on-error: true
     
     - name: Generate coverage report
-      working-directory: beta
       run: |
         lcov --directory . --capture --output-file coverage.info --ignore-errors mismatch
         genhtml coverage.info --output-directory html/coverage
