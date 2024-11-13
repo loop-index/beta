@@ -1,85 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MAGNA Test Reports</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.colors.min.css" />
-</head>
+  </head>
 
-<body style="margin: 0;">
+  <body style="margin: 0;">
     <header class="container">
-        <nav>
-            <div class="row">
-                <img src="https://www.magna.com/ResourcePackages/HighroadFramework/dist/images/logo_Magna-white.svg"
-                    height="40" />
-                <br />
-                <strong style="color: white; font-weight: 800;">Testing Reports</strong>
-            </div>
-        </nav>
+      <nav>
+        <div class="row">
+          <img src="https://www.magna.com/ResourcePackages/HighroadFramework/dist/images/logo_Magna-white.svg" height="40" />
+          <br />
+          <strong style="color: white; font-weight: 800;">Testing Reports</strong>
+        </div>
+      </nav>
     </header>
     <div class="container">
-        <h2><strong>Test results</strong></h2>
-        <label>
-            <input name="open" type="checkbox" role="switch" />
-            Expand all
-        </label>
-        
+      <div style="display:flex; justify-content:space-between; align-items:center; padding: 10px 0;">
+        <h2 style="margin:0;"><strong>Test results</strong></h2>
+        <a href="/coverage/index.html">View Coverage</a>
+      </div>
+      <label><input name="open" type="checkbox" role="switch" />Expand all</label>
+      
         <details>
-            <summary style="display:flex;align-items:center;justify-content:space-between">
-                <div style="display:flex; flex-direction:column;width:90%;gap:0.5rem;">
-                    <span>
-                        cpputest_Calculator.xml
-                        
-                        <span class="pico-color-jade-150">(1/1)</span>
-                        
-                    </span>
-                    <progress value="1" max="1" class="pico-background-red-450" />
-                </div>
-            </summary>
-            <div class="container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Test Name</th>
-                            <th>Time</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        
-                        <tr>
-                            <td>
-                                Plus
-                                
-                            </td>
-
-
-                            <td>0.000s</td>
-                            
-                            <td class="pico-color-jade-150"><b>PASS</b></td>
-                            
-                        </tr>
-                        
-                    </tbody>
-                </table>
+          <summary style="display:flex;align-items:center;justify-content:space-between">
+            <div style="display:flex; flex-direction:column;width:90%;gap:0.5rem;">
+              <span>
+                cpputest_Calculator.xml
+                
+                  <span class="pico-color-jade-150">(1/1)</span>
+                
+              </span>
+              <progress value="1" max="1" class="pico-background-red-450" />
             </div>
+          </summary>
+          <div class="container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Test Name</th>
+                  <th>Time</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                  <tr>
+                    <td>
+                      Plus
+                      
+                    </td>
+
+                    <td>0.000s</td>
+                    
+                      <td class="pico-color-jade-150">
+                        <b>PASS</b>
+                      </td>
+                    
+                  </tr>
+                
+              </tbody>
+            </table>
+          </div>
         </details>
-        
+      
     </div>
 
     <script>
-        const open = document.querySelector('input[name="open"]');
-        const details = document.querySelectorAll('details');
-
-        open.addEventListener('change', () => {
-            details.forEach((detail) => {
-                detail.open = open.checked;
-            });
-        });
+      const open = document.querySelector('input[name="open"]')
+      const details = document.querySelectorAll('details')
+      
+      open.addEventListener('change', () => {
+        details.forEach((detail) => {
+          detail.open = open.checked
+        })
+      })
     </script>
-</body>
-
+  </body>
 </html>
