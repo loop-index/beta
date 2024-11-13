@@ -11,8 +11,8 @@ test: tests.cpp calc_tests.cpp
 	g++ -o calc tests.cpp calc_tests.cpp $(CPPFLAGS) $(LDFLAGS) -DTEST
 
 coverage: tests.cpp calc_tests.cpp
-	g++ -o calc tests.cpp calc_tests.cpp $(CPPFLAGS) $(LDFLAGS) -DTEST --coverage -O0
-	-./calc -c -ojunit
+	g++ -o calc tests.cpp calc_tests.cpp $(CPPFLAGS) $(LDFLAGS) -DTEST --coverage -O0 -g
+	-./calc -c
 	lcov --capture --directory . --output-file coverage.info
 	genhtml coverage.info --output-directory coverage
 
