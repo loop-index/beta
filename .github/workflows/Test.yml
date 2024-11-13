@@ -22,7 +22,7 @@ jobs:
     - name: Set up Python 3.13
       uses: actions/setup-python@v5
       with:
-        python-version: '3.13' 
+        python-version: '3.13'
 
     - name: Set up dependencies
       uses: awalsh128/cache-apt-pkgs-action@latest
@@ -46,6 +46,7 @@ jobs:
 
     - name: Convert test report to html
       run: |
+        pip install jinja2
         python3 gen.py
       continue-on-error: true
     
