@@ -9,7 +9,6 @@ build: calc.cpp
 
 test: tests.cpp calc_tests.cpp
 	g++ -o calc tests.cpp calc_tests.cpp $(CPPFLAGS) $(LDFLAGS) -DTEST
-	./calc -c
 
 coverage: tests.cpp calc_tests.cpp
 	g++ -o calc tests.cpp calc_tests.cpp $(CPPFLAGS) $(LDFLAGS) -DTEST --coverage -O0
