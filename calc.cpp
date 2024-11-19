@@ -2,6 +2,7 @@
 #include <vector>
 #include <string>
 #include <cstring>
+#include <stdio.h>
 using namespace std;
 
 // #ifndef TEST
@@ -35,6 +36,26 @@ double minus_op(double a, double b) {
     // TODO: Implement this function
     return add(a, b);
 }
+
+int get_random_num() {
+    return rand();
+}
+
+
+int count_leading_zeroes(int value) {
+
+#ifdef __aarm__ // Only for arm
+    // return __builtin__arm_clz(value); // This is natively mapped by GCC
+    if (value == 0) {
+        throw("0 is not allowed. Result is undefined");
+    }
+        return __builtin_clzll(value);
+
+    // return the trailing 0s instead for non-arm machine
+    return __builtin_ctz(value);
+#endif
+}
+
 
 double calculator() {
     vector<string> tokens = split(get_input());
