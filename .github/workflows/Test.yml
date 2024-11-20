@@ -63,3 +63,7 @@ jobs:
       uses: JamesIves/github-pages-deploy-action@v4
       with:
         folder: html/
+
+    - name: Run again just for the status
+      run: |
+        ./calc -c -v
