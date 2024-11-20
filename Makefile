@@ -22,7 +22,10 @@ report: test
 	python3 gen.py
 
 run: build
-	./calc
+	./calc -c
+
+runtest: test
+	./calc -c
 
 clean:
 	rm -f calc
