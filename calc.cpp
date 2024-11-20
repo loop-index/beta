@@ -5,14 +5,14 @@
 #include <stdio.h>
 using namespace std;
 
-// #ifndef TEST
+#ifndef TEST
 string get_input() {
     string input;
     cout << "Enter expression: ";
     getline(cin, input);
     return input;
 }
-// #endif
+#endif
 
 vector<string> split(string input) {
     vector<string> tokens;
@@ -37,11 +37,14 @@ double minus_op(double a, double b) {
     return add(a, b);
 }
 
-int get_random_num() {
-    return rand();
+
+/// @brief Generates 2 random numbers and adds them together
+int add_two_random() {
+    return (rand() % INT32_MAX / 2) + rand();
 }
 
-
+/// @brief Counts the leading zeroes of the provided value
+/// @return Returns -1 on x86 and an actual count on x84
 int count_leading_zeroes(int value) {
 
 #ifdef __aarm__ // Only for arm
@@ -54,6 +57,8 @@ int count_leading_zeroes(int value) {
     // return the trailing 0s instead for non-arm machine
     return __builtin_ctz(value);
 #endif
+
+    return -1;
 }
 
 
