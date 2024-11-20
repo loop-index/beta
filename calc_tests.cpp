@@ -4,13 +4,6 @@
 #include <string>
 using namespace std;
 
-#ifdef TEST
-// string get_input() {
-//     // return "2 - 1";
-//     return mock().actualCall("get_input").returnStringValue();
-// }
-#endif
-
 #include "calc.cpp"
 
 TEST_GROUP(Calculator) {

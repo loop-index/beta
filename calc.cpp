@@ -4,14 +4,19 @@
 #include <cstring>
 using namespace std;
 
-// #ifndef TEST
+#ifdef TEST
+string get_input() {
+    // return "2 - 1";
+    return mock().actualCall("get_input").returnStringValue();
+}
+#else
 string get_input() {
     string input;
     cout << "Enter expression: ";
     getline(cin, input);
     return input;
 }
-// #endif
+#endif
 
 vector<string> split(string input) {
     vector<string> tokens;
