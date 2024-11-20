@@ -52,11 +52,12 @@ unsigned long square_randomNumber(int val = 0) {
     return val * val;
 }
 
+#ifdef __arm__ // Only for arm
+#endif
 /// @brief Counts the leading zeroes of the provided value
 /// @return Returns -1 on x86 and an actual count on x84
 int count_leading_zeroes(int value) {
 
-#ifdef __aarm__ // Only for arm
     // return __builtin__arm_clz(value); // This is natively mapped by GCC
     if (value == 0) {
         throw("0 is not allowed. Result is undefined");
@@ -65,9 +66,7 @@ int count_leading_zeroes(int value) {
 
     // return the trailing 0s instead for non-arm machine
     return __builtin_ctz(value);
-#endif
 
-    return -1;
 }
 
 
@@ -87,6 +86,29 @@ double calculator() {
 
     return result;
 }
+
+#ifdef __arm__ // hardware specific instruction
+#endif
+
+//////////////////////////////////////////////////
+/// Assume this section is hardware dependant ////
+//////////////////////////////////////////////////
+
+int count_set_bits(int value) {
+    return __builtin_popcount(value);  // Real implementation that we're mocking in the test
+}
+
+
+void fun_function(int value)
+{
+    // Call to real count_set_bits function (mocked in tests)
+    int result = count_set_bits(value);
+    std::cout << "set bits for " << value << " is: " << result << '\n';
+}
+
+//////////////////////////////////////////////////
+///          End hardware dependacy           ////
+//////////////////////////////////////////////////
 
 #ifndef TEST
 int main() {

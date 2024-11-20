@@ -92,3 +92,30 @@ generated_expected_random_value of " << randomReturn << '\n';
 
 //     // mock().checkExpectations();
 // }
+
+
+
+// This is mocked version for testing purposes
+void mocked_fun_function(int value, int expect)
+{
+    // Mocking count_set_bits here
+    mock().expectOneCall("count_set_bits").withIntParameter("value", value).andReturnValue(expect);
+    
+    // The rest of fun_function
+    int result = count_set_bits(value); // This should now use the mock instead
+    std::cout << "set bits for " << value << " is: " << result << '\n';
+}
+
+// Test case
+TEST(Calculator, HardwareSpecific)
+{
+    // Set up mock expectations for count_set_bits
+    mock().expectOneCall("count_set_bits").withIntParameter("value", 0).andReturnValue(0);
+    mock().expectOneCall("count_set_bits").withIntParameter("value", 10).andReturnValue(2);
+    mock().expectOneCall("count_set_bits").withIntParameter("value", -1).andReturnValue(32);
+
+    // Now, call mocked_fun_function and test it
+    mocked_fun_function(0, 0);    // 0 bits are set for 0x0
+    mocked_fun_function(10, 2);   // 2 bits are set for 0xA
+    mocked_fun_function(-1, 32);  // 32 bits are set for 0xFFFFFFFF
+}
