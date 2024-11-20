@@ -5,14 +5,14 @@
 #include <stdio.h>
 using namespace std;
 
-#ifndef TEST
+// #ifndef TEST
 string get_input() {
     string input;
     cout << "Enter expression: ";
     getline(cin, input);
     return input;
 }
-#endif
+// #endif
 
 vector<string> split(string input) {
     vector<string> tokens;
@@ -38,9 +38,18 @@ double minus_op(double a, double b) {
 }
 
 
-/// @brief Generates 2 random numbers and adds them together
-int add_two_random() {
-    return (rand() % INT32_MAX / 2) + rand();
+/// @brief Generates a random number
+int get_random_num() {
+    return rand();
+}
+
+/// @brief Squares the provided number. If no parameter provided or provided
+/// @brief value is 0, gets a random value and squares it.
+unsigned long square_randomNumber(int val = 0) {
+    if (val == 0)
+        int val = get_random_num();
+
+    return val * val;
 }
 
 /// @brief Counts the leading zeroes of the provided value

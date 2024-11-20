@@ -38,19 +38,27 @@ TEST(Calculator, Plus) {
     CHECK_EQUAL(expected, result);
 }
 
+
+
 // Why we mock part1. (Uncertain value)
+// There's no way to consistently test add_two_random() without seeding.
+// In a larger project, or depending on the case, seeding may not be an option
+// So we can mock the function itself and have it return an expected value.
 TEST(Calculator, SporadicValue) {
     // int a = add_two_random(); // There's no way to know what a's value is. Random value
+    // ulong b = square_randomNumber(); // There's no way to check this
 
     mock().expectOneCall("add_two_random").andReturnValue(15);
-    int results = mock().actualCall("add_two_random").returnIntValue();
 
     // So instead, we mock get_random_num (Assuming it does its job correctly)
     // And then provide a **valid** result from a.
+    int randomReturn = mock().actualCall("add_two_random").returnIntValue();
+    CHECK_EQUAL(15,randomReturn);
 
-    // int results = add_two_random();
-    std::cout << "This is result: " << results <<"\n\n\n"; 
-    CHECK_EQUAL(15,results);
+    std::cout << "Checking square_randomReturn with \
+generated_expected_random_value of " << randomReturn << '\n'; 
+    CHECK_EQUAL(225, square_randomNumber(randomReturn));
+
 }
 
 /* TEST(Calculator, hardwareSpecific) {
