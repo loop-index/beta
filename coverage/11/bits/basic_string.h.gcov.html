@@ -31,18 +31,18 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">9</td>
             <td class="headerCovTableEntry">15</td>
-            <td class="headerCovTableEntryLo">0.0 %</td>
+            <td class="headerCovTableEntryLo">60.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-20 23:55:09</td>
+            <td class="headerValue">2024-11-21 00:06:43</td>
             <td></td>
             <td class="headerItem">Functions:</td>
-            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">3</td>
             <td class="headerCovTableEntry">5</td>
-            <td class="headerCovTableEntryLo">0.0 %</td>
+            <td class="headerCovTableEntryLo">60.0 %</td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -592,14 +592,14 @@
 <a name="530"><span class="lineNum">     530 </span>            :       // 3076. basic_string CTAD ambiguity</a>
 <a name="531"><span class="lineNum">     531 </span>            :       template&lt;typename = _RequireAllocator&lt;_Alloc&gt;&gt;</a>
 <a name="532"><span class="lineNum">     532 </span>            : #endif</a>
-<a name="533"><span class="lineNum">     533 </span><span class="lineNoCov">          0 :       basic_string(const _CharT* __s, const _Alloc&amp; __a = _Alloc())</span></a>
-<a name="534"><span class="lineNum">     534 </span><span class="lineNoCov">          0 :       : _M_dataplus(_M_local_data(), __a)</span></a>
+<a name="533"><span class="lineNum">     533 </span><span class="lineCov">          4 :       basic_string(const _CharT* __s, const _Alloc&amp; __a = _Alloc())</span></a>
+<a name="534"><span class="lineNum">     534 </span><span class="lineCov">          4 :       : _M_dataplus(_M_local_data(), __a)</span></a>
 <a name="535"><span class="lineNum">     535 </span>            :       {</a>
-<a name="536"><span class="lineNum">     536 </span><span class="lineNoCov">          0 :         const _CharT* __end = __s ? __s + traits_type::length(__s)</span></a>
+<a name="536"><span class="lineNum">     536 </span><span class="lineCov">          4 :         const _CharT* __end = __s ? __s + traits_type::length(__s)</span></a>
 <a name="537"><span class="lineNum">     537 </span>            :           // We just need a non-null pointer here to get an exception:</a>
 <a name="538"><span class="lineNum">     538 </span>            :           : reinterpret_cast&lt;const _CharT*&gt;(__alignof__(_CharT));</a>
-<a name="539"><span class="lineNum">     539 </span><span class="lineNoCov">          0 :         _M_construct(__s, __end, random_access_iterator_tag());</span></a>
-<a name="540"><span class="lineNum">     540 </span><span class="lineNoCov">          0 :       }</span></a>
+<a name="539"><span class="lineNum">     539 </span><span class="lineCov">          4 :         _M_construct(__s, __end, random_access_iterator_tag());</span></a>
+<a name="540"><span class="lineNum">     540 </span><span class="lineCov">          4 :       }</span></a>
 <a name="541"><span class="lineNum">     541 </span>            : </a>
 <a name="542"><span class="lineNum">     542 </span>            :       /**</a>
 <a name="543"><span class="lineNum">     543 </span>            :        *  @brief  Construct string as multiple characters.</a>
@@ -6307,9 +6307,9 @@
 <a name="6245"><span class="lineNum">    6245 </span>            :    */</a>
 <a name="6246"><span class="lineNum">    6246 </span>            :   template&lt;typename _CharT, typename _Traits, typename _Alloc&gt;</a>
 <a name="6247"><span class="lineNum">    6247 </span>            :     inline bool</a>
-<a name="6248"><span class="lineNum">    6248 </span><span class="lineNoCov">          0 :     operator==(const basic_string&lt;_CharT, _Traits, _Alloc&gt;&amp; __lhs,</span></a>
+<a name="6248"><span class="lineNum">    6248 </span><span class="lineCov">          1 :     operator==(const basic_string&lt;_CharT, _Traits, _Alloc&gt;&amp; __lhs,</span></a>
 <a name="6249"><span class="lineNum">    6249 </span>            :                const _CharT* __rhs)</a>
-<a name="6250"><span class="lineNum">    6250 </span><span class="lineNoCov">          0 :     { return __lhs.compare(__rhs) == 0; }</span></a>
+<a name="6250"><span class="lineNum">    6250 </span><span class="lineCov">          1 :     { return __lhs.compare(__rhs) == 0; }</span></a>
 <a name="6251"><span class="lineNum">    6251 </span>            : </a>
 <a name="6252"><span class="lineNum">    6252 </span>            : #if __cpp_lib_three_way_comparison</a>
 <a name="6253"><span class="lineNum">    6253 </span>            :   /**</a>
@@ -6708,8 +6708,8 @@
 <a name="6646"><span class="lineNum">    6646 </span>            :   { return __gnu_cxx::__stoa(&amp;std::strtof, &quot;stof&quot;, __str.c_str(), __idx); }</a>
 <a name="6647"><span class="lineNum">    6647 </span>            : </a>
 <a name="6648"><span class="lineNum">    6648 </span>            :   inline double</a>
-<a name="6649"><span class="lineNum">    6649 </span><span class="lineNoCov">          0 :   stod(const string&amp; __str, size_t* __idx = 0)</span></a>
-<a name="6650"><span class="lineNum">    6650 </span><span class="lineNoCov">          0 :   { return __gnu_cxx::__stoa(&amp;std::strtod, &quot;stod&quot;, __str.c_str(), __idx); }</span></a>
+<a name="6649"><span class="lineNum">    6649 </span><span class="lineCov">          2 :   stod(const string&amp; __str, size_t* __idx = 0)</span></a>
+<a name="6650"><span class="lineNum">    6650 </span><span class="lineCov">          2 :   { return __gnu_cxx::__stoa(&amp;std::strtod, &quot;stod&quot;, __str.c_str(), __idx); }</span></a>
 <a name="6651"><span class="lineNum">    6651 </span>            : </a>
 <a name="6652"><span class="lineNum">    6652 </span>            :   inline long double</a>
 <a name="6653"><span class="lineNum">    6653 </span>            :   stold(const string&amp; __str, size_t* __idx = 0)</a>

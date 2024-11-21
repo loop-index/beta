@@ -25,6 +25,92 @@
       </div>
       <label><input name="open" type="checkbox" role="switch" />Expand all</label>
       
+        <details>
+          <summary style="display:flex;align-items:center;justify-content:space-between">
+            <div style="display:flex; flex-direction:column;width:90%;gap:0.5rem;">
+              <span>
+                cpputest_Calculator.xml
+                
+                  <span class="pico-color-red-450">(1/3)</span>
+                
+              </span>
+              <progress value="1" max="3" class="pico-background-red-450" />
+            </div>
+          </summary>
+          <div class="container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Test Name</th>
+                  <th>Time</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                  <tr>
+                    <td>
+                      Calculator
+                      
+                        <br />
+                        
+                          <span class="pico-color-red-450">
+                            <b>AssertionFailedError:</b>
+                            calc_tests.cpp:39: expected <3>{newline} but was  <1>{newline} difference starts at position 0 at: <          1         >{newline}                                                ^
+                          </span>
+                        
+                      
+                    </td>
+
+                    <td>0.000s</td>
+                    
+                      <td class="pico-color-red-450">
+                        <b>FAIL</b>
+                      </td>
+                    
+                  </tr>
+                
+                  <tr>
+                    <td>
+                      Minus
+                      
+                    </td>
+
+                    <td>0.000s</td>
+                    
+                      <td class="pico-color-jade-150">
+                        <b>PASS</b>
+                      </td>
+                    
+                  </tr>
+                
+                  <tr>
+                    <td>
+                      Plus
+                      
+                        <br />
+                        
+                          <span class="pico-color-red-450">
+                            <b>AssertionFailedError:</b>
+                            calc_tests.cpp:23: expected <3>{newline} but was  <-1>{newline} difference starts at position 0 at: <          -1        >{newline}                                                ^
+                          </span>
+                        
+                      
+                    </td>
+
+                    <td>0.001s</td>
+                    
+                      <td class="pico-color-red-450">
+                        <b>FAIL</b>
+                      </td>
+                    
+                  </tr>
+                
+              </tbody>
+            </table>
+          </div>
+        </details>
+      
     </div>
 
     <script>
