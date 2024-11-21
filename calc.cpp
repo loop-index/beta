@@ -29,7 +29,7 @@ vector<string> split(string input) {
 }
 
 double add(double a, double b) {
-    return a - b;
+    return a + b;
 }
 
 double plus_op(double a, double b) {
