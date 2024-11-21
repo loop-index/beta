@@ -31,18 +31,18 @@
             <td class="headerValue">coverage.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
             <td class="headerCovTableEntry">12</td>
-            <td class="headerCovTableEntry">12</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr>
             <td class="headerItem">Date:</td>
-            <td class="headerValue">2024-11-21 00:24:48</td>
+            <td class="headerValue">2024-11-21 00:25:06</td>
             <td></td>
             <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">0</td>
             <td class="headerCovTableEntry">3</td>
-            <td class="headerCovTableEntry">3</td>
-            <td class="headerCovTableEntryHi">100.0 %</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
           </tr>
           <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
         </table>
@@ -1045,7 +1045,7 @@
 <a name="983"><span class="lineNum">     983 </span>            : </a>
 <a name="984"><span class="lineNum">     984 </span>            :   template&lt;typename _Tp, typename _Up, typename _Allocator&gt;</a>
 <a name="985"><span class="lineNum">     985 </span>            :     inline void</a>
-<a name="986"><span class="lineNum">     986 </span><span class="lineCov">          3 :     __relocate_object_a(_Tp* __restrict __dest, _Up* __restrict __orig,</span></a>
+<a name="986"><span class="lineNum">     986 </span><span class="lineNoCov">          0 :     __relocate_object_a(_Tp* __restrict __dest, _Up* __restrict __orig,</span></a>
 <a name="987"><span class="lineNum">     987 </span>            :                         _Allocator&amp; __alloc)</a>
 <a name="988"><span class="lineNum">     988 </span>            :     noexcept(noexcept(std::allocator_traits&lt;_Allocator&gt;::construct(__alloc,</a>
 <a name="989"><span class="lineNum">     989 </span>            :                          __dest, std::move(*__orig)))</a>
@@ -1053,9 +1053,9 @@
 <a name="991"><span class="lineNum">     991 </span>            :                             __alloc, std::__addressof(*__orig))))</a>
 <a name="992"><span class="lineNum">     992 </span>            :     {</a>
 <a name="993"><span class="lineNum">     993 </span>            :       typedef std::allocator_traits&lt;_Allocator&gt; __traits;</a>
-<a name="994"><span class="lineNum">     994 </span><span class="lineCov">          3 :       __traits::construct(__alloc, __dest, std::move(*__orig));</span></a>
-<a name="995"><span class="lineNum">     995 </span><span class="lineCov">          3 :       __traits::destroy(__alloc, std::__addressof(*__orig));</span></a>
-<a name="996"><span class="lineNum">     996 </span><span class="lineCov">          3 :     }</span></a>
+<a name="994"><span class="lineNum">     994 </span><span class="lineNoCov">          0 :       __traits::construct(__alloc, __dest, std::move(*__orig));</span></a>
+<a name="995"><span class="lineNum">     995 </span><span class="lineNoCov">          0 :       __traits::destroy(__alloc, std::__addressof(*__orig));</span></a>
+<a name="996"><span class="lineNum">     996 </span><span class="lineNoCov">          0 :     }</span></a>
 <a name="997"><span class="lineNum">     997 </span>            : </a>
 <a name="998"><span class="lineNum">     998 </span>            :   // This class may be specialized for specific types.</a>
 <a name="999"><span class="lineNum">     999 </span>            :   // Also known as is_trivially_relocatable.</a>
@@ -1077,7 +1077,7 @@
 <a name="1015"><span class="lineNum">    1015 </span>            :   template &lt;typename _InputIterator, typename _ForwardIterator,</a>
 <a name="1016"><span class="lineNum">    1016 </span>            :             typename _Allocator&gt;</a>
 <a name="1017"><span class="lineNum">    1017 </span>            :     inline _ForwardIterator</a>
-<a name="1018"><span class="lineNum">    1018 </span><span class="lineCov">          6 :     __relocate_a_1(_InputIterator __first, _InputIterator __last,</span></a>
+<a name="1018"><span class="lineNum">    1018 </span><span class="lineNoCov">          0 :     __relocate_a_1(_InputIterator __first, _InputIterator __last,</span></a>
 <a name="1019"><span class="lineNum">    1019 </span>            :                    _ForwardIterator __result, _Allocator&amp; __alloc)</a>
 <a name="1020"><span class="lineNum">    1020 </span>            :     noexcept(noexcept(std::__relocate_object_a(std::addressof(*__result),</a>
 <a name="1021"><span class="lineNum">    1021 </span>            :                                                std::addressof(*__first),</a>
@@ -1089,25 +1089,25 @@
 <a name="1027"><span class="lineNum">    1027 </span>            :         _ValueType2;</a>
 <a name="1028"><span class="lineNum">    1028 </span>            :       static_assert(std::is_same&lt;_ValueType, _ValueType2&gt;::value,</a>
 <a name="1029"><span class="lineNum">    1029 </span>            :           &quot;relocation is only possible for values of the same type&quot;);</a>
-<a name="1030"><span class="lineNum">    1030 </span><span class="lineCov">          6 :       _ForwardIterator __cur = __result;</span></a>
-<a name="1031"><span class="lineNum">    1031 </span><span class="lineCov">          9 :       for (; __first != __last; ++__first, (void)++__cur)</span></a>
-<a name="1032"><span class="lineNum">    1032 </span><span class="lineCov">          3 :         std::__relocate_object_a(std::__addressof(*__cur),</span></a>
+<a name="1030"><span class="lineNum">    1030 </span><span class="lineNoCov">          0 :       _ForwardIterator __cur = __result;</span></a>
+<a name="1031"><span class="lineNum">    1031 </span><span class="lineNoCov">          0 :       for (; __first != __last; ++__first, (void)++__cur)</span></a>
+<a name="1032"><span class="lineNum">    1032 </span><span class="lineNoCov">          0 :         std::__relocate_object_a(std::__addressof(*__cur),</span></a>
 <a name="1033"><span class="lineNum">    1033 </span>            :                                  std::__addressof(*__first), __alloc);</a>
-<a name="1034"><span class="lineNum">    1034 </span><span class="lineCov">          6 :       return __cur;</span></a>
+<a name="1034"><span class="lineNum">    1034 </span><span class="lineNoCov">          0 :       return __cur;</span></a>
 <a name="1035"><span class="lineNum">    1035 </span>            :     }</a>
 <a name="1036"><span class="lineNum">    1036 </span>            : </a>
 <a name="1037"><span class="lineNum">    1037 </span>            :   template &lt;typename _InputIterator, typename _ForwardIterator,</a>
 <a name="1038"><span class="lineNum">    1038 </span>            :             typename _Allocator&gt;</a>
 <a name="1039"><span class="lineNum">    1039 </span>            :     inline _ForwardIterator</a>
-<a name="1040"><span class="lineNum">    1040 </span><span class="lineCov">          6 :     __relocate_a(_InputIterator __first, _InputIterator __last,</span></a>
+<a name="1040"><span class="lineNum">    1040 </span><span class="lineNoCov">          0 :     __relocate_a(_InputIterator __first, _InputIterator __last,</span></a>
 <a name="1041"><span class="lineNum">    1041 </span>            :                  _ForwardIterator __result, _Allocator&amp; __alloc)</a>
 <a name="1042"><span class="lineNum">    1042 </span>            :     noexcept(noexcept(__relocate_a_1(std::__niter_base(__first),</a>
 <a name="1043"><span class="lineNum">    1043 </span>            :                                      std::__niter_base(__last),</a>
 <a name="1044"><span class="lineNum">    1044 </span>            :                                      std::__niter_base(__result), __alloc)))</a>
 <a name="1045"><span class="lineNum">    1045 </span>            :     {</a>
-<a name="1046"><span class="lineNum">    1046 </span><span class="lineCov">          6 :       return __relocate_a_1(std::__niter_base(__first),</span></a>
+<a name="1046"><span class="lineNum">    1046 </span><span class="lineNoCov">          0 :       return __relocate_a_1(std::__niter_base(__first),</span></a>
 <a name="1047"><span class="lineNum">    1047 </span>            :                             std::__niter_base(__last),</a>
-<a name="1048"><span class="lineNum">    1048 </span><span class="lineCov">          6 :                             std::__niter_base(__result), __alloc);</span></a>
+<a name="1048"><span class="lineNum">    1048 </span><span class="lineNoCov">          0 :                             std::__niter_base(__result), __alloc);</span></a>
 <a name="1049"><span class="lineNum">    1049 </span>            :     }</a>
 <a name="1050"><span class="lineNum">    1050 </span>            : </a>
 <a name="1051"><span class="lineNum">    1051 </span>            :   /// @endcond</a>
