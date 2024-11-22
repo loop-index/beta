@@ -39,4 +39,4 @@ TEST(Calculator, Calculator) {
     CHECK_EQUAL(expected, result);
 
     mock().checkExpectations();
-}
+} 
