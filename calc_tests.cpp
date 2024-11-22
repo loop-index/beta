@@ -23,20 +23,20 @@ TEST(Calculator, Plus) {
     CHECK_EQUAL(expected, result);
 }
 
-// TEST(Calculator, Minus) {
-//     double a = 2;
-//     double b = 1;
-//     double expected = 1;
-//     double result = minus_op(a, b);
-//     CHECK_EQUAL(expected, result);
-// }
+TEST(Calculator, Minus) {
+    double a = 2;
+    double b = 1;
+    double expected = 1;
+    double result = minus_op(a, b);
+    CHECK_EQUAL(expected, result);
+}
 
-// TEST(Calculator, Calculator) {
-//     mock().expectOneCall("get_input").andReturnValue("2 + 1");
+TEST(Calculator, Calculator) {
+    mock().expectOneCall("get_input").andReturnValue("2 + 1");
 
-//     double expected = 3;
-//     double result = calculator();
-//     CHECK_EQUAL(expected, result);
+    double expected = 3;
+    double result = calculator();
+    CHECK_EQUAL(expected, result);
 
-//     mock().checkExpectations();
-// }
+    mock().checkExpectations();
+}

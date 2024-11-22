@@ -59,10 +59,19 @@ jobs:
     - name: Copy index.html
       run: cp target.html html/index.html
 
-    - name: Upload coverage report
-      uses: JamesIves/github-pages-deploy-action@v4
+    # - name: Upload coverage report
+    #   uses: JamesIves/github-pages-deploy-action@v4
+    #   with:
+    #     folder: html/
+    
+    - name: Upload report as artifact
+      uses: actions/upload-pages-artifact@v3
       with:
-        folder: html/
+        path: html/
+
+    - name: Deploy artifact to pages
+      id: deployment
+      uses: actions/deploy-pages@v4
 
     - name: Run again just for the status
       run: |
